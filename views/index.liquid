@@ -3,7 +3,9 @@
 </section>
 
 <form method="GET" class="controls">
+
   <input type="search" name="search" placeholder="Zoek op naam of skill..." />
+
   <select name="sort">
     <option value=""> Sorteer op </option>
     <option value="name"> Naam (a-z)</option>
@@ -11,11 +13,29 @@
     <option value="age"> Leeftijd ⌄</option>
     <option value="-age"> Leeftijd ^</option>
   </select>
+
+  <select name="filter[birthdate][_month]">
+    <option value="">Filter op maand</option>
+    <option value="1">Januari</option>
+    <option value="2">Februari</option>
+    <option value="3">Maart</option>
+    <option value="4">April</option>
+    <option value="5">Mei</option>
+    <option value="6">Juni</option>
+    <option value="7">Juli</option>
+    <option value="8">Augustus</option>
+    <option value="9">September</option>
+    <option value="10">Oktober</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+  
   <select name="filter[fav_color]">
     <option value=""> Filter op kleur </option>
     <option value="red">Rood</option>
     <option value="blue">Blauw</option>
   </select>
+
   <select name="filter[shoe_size]">
     <option value=""> Filter op schoenmaat </option>
     <option value="37"> 37 </option>
@@ -28,14 +48,19 @@
     <option value="44"> 44 </option>
     <option value="45"> 45 </option>
     <option value="46"> 46 </option>
+  </select>
 
   <button type="submit">Toepassen</button>
 </form>
 
-<ul>
+<section class="section-card">
   {% for person in persons %}
-    <li><a href="/student/{{ person.id }}">{{ person.name }}</a></li>
+    <article class="card">
+      <img src="{{ person.avatar}}" alt="{{ person.name }}">
+      <h3>{{ person.name }}</h3>
+      <a href="/student/{{ person.id }}">Bekijk profiel</a>
+    </article>
   {% endfor %}
-</ul>
+</section>
 
 {% render 'partials/foot.liquid', squads: squads %}
