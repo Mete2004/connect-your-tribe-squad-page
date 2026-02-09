@@ -1,5 +1,36 @@
 {% render 'partials/head.liquid', title: 'Squad page 1J', page: 'squad' %}
 
+</section>
+
+<form method="GET" class="controls">
+  <input type="search" name="search" placeholder="Zoek op naam of skill..." />
+  <select name="sort">
+    <option value=""> Sorteer op </option>
+    <option value="name"> Naam (a-z)</option>
+    <option value="-name"> Naam (z-a)</option>
+    <option value="age"> Leeftijd ⌄</option>
+    <option value="-age"> Leeftijd ^</option>
+  </select>
+  <select name="filter[fav_color]">
+    <option value=""> Filter op kleur </option>
+    <option value="red">Rood</option>
+    <option value="blue">Blauw</option>
+  </select>
+  <select name="filter[shoe_size]">
+    <option value=""> Filter op schoenmaat </option>
+    <option value="37"> 37 </option>
+    <option value="38"> 38 </option>
+    <option value="39"> 39 </option>
+    <option value="40"> 40 </option>
+    <option value="41"> 41 </option>
+    <option value="42"> 42 </option>
+    <option value="43"> 43 </option>
+    <option value="44"> 44 </option>
+    <option value="45"> 45 </option>
+    <option value="46"> 46 </option>
+
+  <button type="submit">Toepassen</button>
+</form>
 
 <ul>
   {% for person in persons %}
