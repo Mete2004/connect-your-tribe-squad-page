@@ -1,5 +1,28 @@
-{% render 'partials/head.liquid', title: person.name, page: 'student' %}
+{% render 'partials/head.liquid', page: 'student' %}
 
-<a href="/">Back</a>
+
+<section class="student-section">
+<div class="student-card">
+  <a href="/">Terug</a>
+  <h1>{{ person.name }}</h1>
+
+  <div class="div-img-big">
+      <img src="{{ person.avatar}}" class="img-student" alt="{{ person.name }}">
+  </div>
+  
+  <!-- overige info -->
+  <div class="content-student">
+  <p>{{ person.bio }}</p>
+    
+  <h3>Squads</h3>
+    <ul>
+      {% for squad in squads %}
+        <li>Squad {{ squad.name }}</li>
+      {% endfor %}
+    </ul>
+    </div>
+</div>
+</section>
+
 
 {% render 'partials/foot.liquid', squads: squads %}

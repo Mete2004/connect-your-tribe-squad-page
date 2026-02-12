@@ -3,60 +3,80 @@
 </section>
 
 <form method="GET" class="controls">
-
-  <input type="search" name="search" placeholder="Zoek op naam of skill..." />
-
-  <select name="sort">
-    <option value=""> Sorteer op </option>
-    <option value="name"> Naam (a-z)</option>
-    <option value="-name"> Naam (z-a)</option>
-    <option value="age"> Leeftijd ⌄</option>
-    <option value="-age"> Leeftijd ^</option>
-  </select>
-
-  <select name="filter[birthdate][_month]">
-    <option value="">Filter op maand</option>
-    <option value="1">Januari</option>
-    <option value="2">Februari</option>
-    <option value="3">Maart</option>
-    <option value="4">April</option>
-    <option value="5">Mei</option>
-    <option value="6">Juni</option>
-    <option value="7">Juli</option>
-    <option value="8">Augustus</option>
-    <option value="9">September</option>
-    <option value="10">Oktober</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-  </select>
+  <div class="controls-outer">
   
-  <select name="filter[fav_color]">
-    <option value=""> Filter op kleur </option>
-    <option value="red">Rood</option>
-    <option value="blue">Blauw</option>
-  </select>
+   <div class="search-box">
+    <input type="search" name="search" placeholder="Zoek op naam of skill..." />
+    <button type="submit" class="search-btn">
+      <img src="/assets/search-icon.png" class="search-icon" alt="zoeken">
+    </button>
+  </div>
 
-  <select name="filter[shoe_size]">
-    <option value=""> Filter op schoenmaat </option>
-    <option value="37"> 37 </option>
-    <option value="38"> 38 </option>
-    <option value="39"> 39 </option>
-    <option value="40"> 40 </option>
-    <option value="41"> 41 </option>
-    <option value="42"> 42 </option>
-    <option value="43"> 43 </option>
-    <option value="44"> 44 </option>
-    <option value="45"> 45 </option>
-    <option value="46"> 46 </option>
-  </select>
+  <div class="div-select">
+    <select name="sort">
+      <option value=""> Sorteer op </option>
+      <option value="name"> Naam (a-z)</option>
+      <option value="-name"> Naam (z-a)</option>
+      <option value="age"> Leeftijd ⌄</option>
+      <option value="-age"> Leeftijd ^</option>
+    </select>
 
-  <button type="submit">Toepassen</button>
+    <select name="filter[birthdate][_month]">
+      <option value="">Filter op maand</option>
+      <option value="1">Januari</option>
+      <option value="2">Februari</option>
+      <option value="3">Maart</option>
+      <option value="4">April</option>
+      <option value="5">Mei</option>
+      <option value="6">Juni</option>
+      <option value="7">Juli</option>
+      <option value="8">Augustus</option>
+      <option value="9">September</option>
+      <option value="10">Oktober</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+    
+    <select name="filter[fav_color]">
+      <option value=""> Filter op kleur </option>
+      <option value="red">Rood</option>
+      <option value="blue">Blauw</option>
+      <option value="green">Groen</option>
+      <option value="yellow">Geel</option>
+      <option value="orange">Oranje</option>
+      <option value="purple">Paars</option>
+      <option value="pink">Roze</option>
+      <option value="black">Zwart</option>
+      <option value="white">Wit</option>
+      <option value="brown">Bruin</option>
+      <option value="gray">Grijs</option>
+    </select>
+
+    <select name="filter[shoe_size]">
+      <option value=""> Filter op schoenmaat </option>
+      <option value="37"> 37 </option>
+      <option value="38"> 38 </option>
+      <option value="39"> 39 </option>
+      <option value="40"> 40 </option>
+      <option value="41"> 41 </option>
+      <option value="42"> 42 </option>
+      <option value="43"> 43 </option>
+      <option value="44"> 44 </option>
+      <option value="45"> 45 </option>
+      <option value="46"> 46 </option>
+    </select>
+  </div>
+
+    <button type="submit" class="button-toepassen">Toepassen</button>
+  </div>
 </form>
 
 <section class="section-card">
   {% for person in persons %}
     <article class="card">
-      <img src="{{ person.avatar}}" alt="{{ person.name }}">
+      <div class="div-img">
+      <img src="{{ person.avatar}}" class="img-index" alt="{{ person.name }}">
+      </div>
       <h3>{{ person.name }}</h3>
       <a href="/student/{{ person.id }}">Bekijk profiel</a>
     </article>
