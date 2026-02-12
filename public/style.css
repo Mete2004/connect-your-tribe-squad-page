@@ -55,6 +55,7 @@ body{
 .search-btn{
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .search-icon{
