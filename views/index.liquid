@@ -79,7 +79,7 @@
   {% for person in persons %}
     <article class="card">
       <div class="div-img">
-      <img src="{{ person.avatar}}" class="img-index" alt="{{ person.name }}">
+      <img src="https://fdnd.directus.app/assets/{{ person.mugshot }}" class="img-index" alt="{{ person.name }}">
       </div>
       <h3>{{ person.name }}</h3>
       <a href="/student/{{ person.id }}">Bekijk profiel</a>
