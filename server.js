@@ -52,21 +52,37 @@ app.use(express.urlencoded({extended: true}))
 app.get('/', async function (request, response) {
 
   // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op naam
-  const params = {
-    // Sorteer op naam
-    'sort': 'name',
+  const { search, sorteren } = request.query;
 
-    // Geef aan welke data je per persoon wil terugkrijgen
-    'fields': '*,squads.*',
+const params = {
+  'fields': '*,squads.*',
+  'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+  'filter[squads][squad_id][cohort]': '2526'
+};
 
-    // Combineer meerdere filters
-    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
-    // Filter eventueel alleen op een bepaalde squad
-    // 'filter[squads][squad_id][name]': '1I',
-    // 'filter[squads][squad_id][name]': '1J',
-    'filter[squads][squad_id][cohort]': '2526'
-  }
-  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+// SEARCH
+if (search) {
+  params['filter[name][_contains]'] = search;
+}
+
+// SORTEREN
+if (sorteren === 'naam-a-z') {
+  params['sort'] = 'name';
+}
+
+if (sorteren === 'naam-z-a') {
+  params['sort'] = '-name';
+}
+
+if (sorteren === 'leeftijd-oud-jong') {
+  params['sort'] = 'birthdate';
+}
+
+if (sorteren === 'leeftijd-jong-oud') {
+  params['sort'] = '-birthdate';
+}
+
+const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params));
 
   // En haal daarvan de JSON op
   const personResponseJSON = await personResponse.json()
